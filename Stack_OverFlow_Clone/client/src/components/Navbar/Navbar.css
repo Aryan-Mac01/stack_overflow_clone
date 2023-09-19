@@ -44,7 +44,7 @@ nav{
     background-color: rgb(226, 226, 226);
 }
 
-.navber form{
+.navbar form{
     flex-grow: 1;
     padding: 0px 12px;
     position: relative;
@@ -59,7 +59,7 @@ nav{
     border-radius: 3px;
 }
 
-.navber form .search-icon{
+.navbar form .search-icon{
     position: absolute;
     left: 25px;
     top: 8px;
