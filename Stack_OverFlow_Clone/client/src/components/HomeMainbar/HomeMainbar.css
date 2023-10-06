@@ -78,14 +78,16 @@
 .display-tags-time .display-tags {
     display: flex;
     flex-wrap: wrap;
-  }
+}
+
+
   
-  .display-tags-time {
+.display-tags-time {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-  }
+}
   
 .display-tags-time .display-tags p{
     margin: 2px;
