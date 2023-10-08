@@ -1,6 +1,7 @@
 import  express  from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
+import userRoutes from './routes/users.js'
 
 const app = express();
 app.use(express.json({limit: "30mb", extended: true}))
@@ -11,6 +12,10 @@ app.use(cors());
 app.get('/',(req,res) => {
     res.send("This is a stack overflow clone API")
 })
+
+app.use('/user', userRoutes)
+
+
 
 const PORT = process.env.PORT || 5000
 

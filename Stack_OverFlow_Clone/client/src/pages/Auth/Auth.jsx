@@ -5,35 +5,44 @@ import AboutAuth from './AboutAuth'
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  
 
   const handleSwitch = () => {
     setIsSignup(!isSignup)
+  }
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
   }
   return (
     <section className='auth-section'>
       { isSignup && <AboutAuth />}
       <div className='auth-container-2'>
         { !isSignup && <img src={icon} alt='stack overflow' className='login-logo'/>}
-        <form>
+        <form onSubmit={handleSubmit}>
             {
               isSignup && (
                 <label htmlFor='name'>
                   <h4>Display Name</h4>
-                  <input type="text" id='name' name='name' />
+                  <input type="text" id='name' name='name' onChange={(e) => {setName(e.target.value)}} />
                 </label>
               )
             }
 
           <label htmlFor="email">
             <h4>Email</h4>
-            <input type="email" name='email' id='email' />
+            <input type="email" name='email' id='email' onChange={(e) => {setEmail(e.target.value)}} />
           </label>
           <label htmlFor="password">
             <div style={{display:"flex", justifyContent:"space-between"}}>
               <h4>Password</h4>
               { !isSignup && <h4 style={{ color: "#007ac6", fontSize:'13px'}}>forgot password</h4> }
             </div>
-            <input type="password" name='password' id='password' />
+            <input type="password" name='password' id='password' onChange={(e) => {setPassword(e.target.value)}}/>
             { isSignup && <p>Passwords must contain at least eight <br/>characters, including at least 1 letter and 1 <br/>number.</p>}
           </label>
           {
