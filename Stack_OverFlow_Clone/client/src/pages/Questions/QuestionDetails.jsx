@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import upVotes from "../../assets/sort-up.svg"
 import downVotes from "../../assets/sort-down.svg"
 import Avatar from "../../components/Avatar/Avatar"
@@ -9,65 +10,69 @@ const QuestionDetails = (question) => {
 
     const { id } = useParams()
 
-    var questionsList = [{
-        _id: '1',
-        upVotes: 3,
-        downVotes: 2,
-        noOfAnswers: 2,
-        questionTitle: 'What is a function?',
-        questionBody: "It meant to be",
-        questionTags: ["java","node js", "react js", "mongo db", "express js"
-        ],
-        userPosted: "mano",
-        askedOn: "jan 1",
-        answer: [{
-            answerBody: "Answer",
-            userAnswered: "Kumar",
-            answeredOn: "jan2",
-            userId: 1,
-        }]
-      },{
-        _id: '2',
-        upVotes: 3,
-        downVotes: 2,
-        noOfAnswers: 0,
-        questionTitle: 'What is a function?',
-        questionBody: "It meant to be",
-        questionTags: ["javascript", "R", "python"],
-        userPosted: "mano",
-        askedOn: "jan 1",
-        answer: [{
-            answerBody: "Answer",
-            userAnswered: "Kumar",
-            answeredOn: "jan2",
-            userId: 2,
-        }]
-      },{
-        _id: '3',
-        upVotes: 3,
-        downVotes: 2,
-        noOfAnswers: 0,
-        questionTitle: 'What is a function?',
-        questionBody: "It meant to be",
-        questionTags: ["javascript", "R", "python"],
-        userPosted: "mano",
-        askedOn: "jan 1",
-        answer: [{
-            answerBody: "Answer",
-            userAnswered: "Kumar",
-            answeredOn: "jan2",
-            userId: 3,
-        }]
-      }]
+    const questionList = useSelector(state => state.questionReducer)
+    //console.log(questionList)
+
+
+    // var questionsList = [{
+    //     _id: '1',
+    //     upVotes: 3,
+    //     downVotes: 2,
+    //     noOfAnswers: 2,
+    //     questionTitle: 'What is a function?',
+    //     questionBody: "It meant to be",
+    //     questionTags: ["java","node js", "react js", "mongo db", "express js"
+    //     ],
+    //     userPosted: "mano",
+    //     askedOn: "jan 1",
+    //     answer: [{
+    //         answerBody: "Answer",
+    //         userAnswered: "Kumar",
+    //         answeredOn: "jan2",
+    //         userId: 1,
+    //     }]
+    //   },{
+    //     _id: '2',
+    //     upVotes: 3,
+    //     downVotes: 2,
+    //     noOfAnswers: 0,
+    //     questionTitle: 'What is a function?',
+    //     questionBody: "It meant to be",
+    //     questionTags: ["javascript", "R", "python"],
+    //     userPosted: "mano",
+    //     askedOn: "jan 1",
+    //     answer: [{
+    //         answerBody: "Answer",
+    //         userAnswered: "Kumar",
+    //         answeredOn: "jan2",
+    //         userId: 2,
+    //     }]
+    //   },{
+    //     _id: '3',
+    //     upVotes: 3,
+    //     downVotes: 2,
+    //     noOfAnswers: 0,
+    //     questionTitle: 'What is a function?',
+    //     questionBody: "It meant to be",
+    //     questionTags: ["javascript", "R", "python"],
+    //     userPosted: "mano",
+    //     askedOn: "jan 1",
+    //     answer: [{
+    //         answerBody: "Answer",
+    //         userAnswered: "Kumar",
+    //         answeredOn: "jan2",
+    //         userId: 3,
+    //     }]
+    //   }]
     
   return (
     <div className='question-details-page'>
         {
-            questionsList === null?
+            questionList.data === null?
             <h1>Loading...</h1>:
             <>
                 {
-                    questionsList.filter(question => question._id === id).map(question => (
+                    questionList.data.filter(question => question._id === id).map(question => (
                         <div key={question._id}>
                             <section className='question-details-container'>
                                 <h1>{question.questionTitle}</h1>
