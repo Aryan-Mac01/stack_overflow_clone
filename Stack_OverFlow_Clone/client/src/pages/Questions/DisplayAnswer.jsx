@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import QuestionsDetails from './QuestionDetails'
+
 import Avatar from '../../components/Avatar/Avatar'
 const DisplayAnswer = ({question}) => {
   return (

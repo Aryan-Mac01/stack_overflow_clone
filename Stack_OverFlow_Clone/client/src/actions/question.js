@@ -23,6 +23,18 @@ export const fetchAllQuestions = () => async (dispatch)=> {
     console.log(error)
 
   }
+} 
+
+export const PostAnswer = (answerData) => async (dispatch) => {
+  try {
+    const {id, noOfAnswers, answerBody, userAnswered} = answerData 
+    const { data } = await api.PostAnswer(id, noOfAnswers, answerBody, userAnswered)
+    dispatch({ type: "POST_ANSWER", payload: data})
+    dispatch(fetchAllQuestions)
+  } catch (error) {
+      console.log(error)
+  }
+  
 }
 
 
